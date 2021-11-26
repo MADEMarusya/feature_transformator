@@ -7,7 +7,7 @@ def req_file(filename, folder=""):
     return [x.strip() for x in content]
 
 setup(
-    name="feature_transformer_marysyaka",
+    name="feature_transformer_made_marusya",
     packages=find_packages(),
     version="0.1.0",
     description="For graduation project in MADE academy",
