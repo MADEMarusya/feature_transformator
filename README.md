@@ -4,6 +4,7 @@
 Для работы с молулем необходимо установить его и скачать в папку модуля необходимые для работы готовые модели 
 ```bash
 python setup.py install
+pip install feature_transformer_made_marusya
 # установка модели синтактического анализа от deeppavlov
 python -m deeppavlov install syntax_ru_syntagrus_bert
 # Установка модели английского нумеризатора
