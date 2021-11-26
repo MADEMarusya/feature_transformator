@@ -13,8 +13,8 @@ from src.feature_transformers.lda_model_transformer import LdaModelTransformer
 from src.feature_transformers.root_word_transformer import RootWordTransformer
 from src.feature_transformers.translate_transformer import TranslateTransformer
 from src.feature_transformers.syntax_spacy_transformer import SyntaxSpacyTransformer
-# from src.feature_transformers.syntax_deeppavlov_transformer import SyntaxDeeppavlovTransformer
-# from src.feature_transformers.ner_deeppavlov_transformer import NerDeeppavlovTransformer
+from src.feature_transformers.syntax_deeppavlov_transformer import SyntaxDeeppavlovTransformer
+from src.feature_transformers.ner_deeppavlov_transformer import NerDeeppavlovTransformer
 from src.feature_transformers.ner_dslim_transformer import NerDslimTransformer
 from src.feature_transformers.language_identification_transformer import LanguageIdentificationTransformer
 from src.feature_transformers.en_numerize_transformer import EnNumerizeTransform
@@ -98,48 +98,48 @@ class FeaturePipeline:
                 batch_size=32,
                 device=device
             )),
-            # ("first_word_and_lemma_transformer", FirstWordAndLemmaTransformer(
-            #     process_column=clean_column,
-            #     first_world_column=first_world_column,
-            #     first_world_lemma_column=first_world_lemma_column,
-            #     ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
-            # )),
-            # ("lda_transformer_3", LdaModelTransformer(
-            #     fit_data_for_topic_prediction=fit_data_for_topic_prediction,
-            #     process_columns=original_sentence_column,
-            #     topic_column=topic_column + str(num_lda_topics),
-            #     prefix_prob_columns=prefix_prob_columns,
-            #     is_need_prob_columns=True,
-            #     num_topics=num_lda_topics
-            # )),
-            # ('root_word_transformer', RootWordTransformer(
-            #     process_column=clean_column,
-            #     root_column=root_column,
-            #     root_lemma_column=root_lemma_column,
-            #     ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
-            # )),
+            ("first_word_and_lemma_transformer", FirstWordAndLemmaTransformer(
+                process_column=clean_column,
+                first_world_column=first_world_column,
+                first_world_lemma_column=first_world_lemma_column,
+                ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
+            )),
+            ("lda_transformer_3", LdaModelTransformer(
+                fit_data_for_topic_prediction=fit_data_for_topic_prediction,
+                process_columns=original_sentence_column,
+                topic_column=topic_column + str(num_lda_topics),
+                prefix_prob_columns=prefix_prob_columns,
+                is_need_prob_columns=True,
+                num_topics=num_lda_topics
+            )),
+            ('root_word_transformer', RootWordTransformer(
+                process_column=clean_column,
+                root_column=root_column,
+                root_lemma_column=root_lemma_column,
+                ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
+            )),
             ("translate_transformer", TranslateTransformer(
                 process_column=capit_punkt_column,
                 translated_column=translated_column,
                 back_translated_column=back_translated_column,
                 device=device
             )),
-            # ("syntax_spacy_transformer", SyntaxSpacyTransformer(
-            #     process_column=clean_column,
-            #     syntax_spacy_column=syntax_spacy_column,
-            #     syntax_pos_spacy_column=syntax_pos_spacy_column,
-            #     ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
-            # )),
-            # ("syntax_deeppavlov_transformer", SyntaxDeeppavlovTransformer(
-            #     process_column=clean_column,
-            #     syntax_deeppavlov_column=syntax_deeppavlov_column,
-            # )),
-            # ("ner_deeppavlov_transformer", NerDeeppavlovTransformer(
-            #         process_column=capit_punkt_column,
-            #         ner_deeppavlov_column=ner_deeppavlov_column,
-            #         tokens_ner_deeppavlov_column=tokens_ner_deeppavlov_column,
-            #         device=device
-            # )),
+            ("syntax_spacy_transformer", SyntaxSpacyTransformer(
+                process_column=clean_column,
+                syntax_spacy_column=syntax_spacy_column,
+                syntax_pos_spacy_column=syntax_pos_spacy_column,
+                ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
+            )),
+            ("syntax_deeppavlov_transformer", SyntaxDeeppavlovTransformer(
+                process_column=clean_column,
+                syntax_deeppavlov_column=syntax_deeppavlov_column,
+            )),
+            ("ner_deeppavlov_transformer", NerDeeppavlovTransformer(
+                    process_column=capit_punkt_column,
+                    ner_deeppavlov_column=ner_deeppavlov_column,
+                    tokens_ner_deeppavlov_column=tokens_ner_deeppavlov_column,
+                    device=device
+            )),
             ("ner_dslim_transformer", NerDslimTransformer(
                 process_column=translated_sentence_column,
                 misc_column=misc_column,
@@ -156,10 +156,10 @@ class FeaturePipeline:
                 process_column=translated_sentence_column,
                 numerize_column=numerize_column
             )),
-            # ("language_identification", LanguageIdentificationTransformer(
-            #     process_column=capit_punkt_column,
-            #     path_to_lid_model=path_to_lid_model
-            # ))
+            ("language_identification", LanguageIdentificationTransformer(
+                process_column=capit_punkt_column,
+                path_to_lid_model=path_to_lid_model
+            ))
         ])
 
     def fit(self, X: DataFrame, y: Series = None):
