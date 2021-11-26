@@ -1,0 +1,13 @@
+typing==3.7.4.3
+Cython==0.29.23
+torch==1.10.0
+scikit-learn==1.0.1
+gensim==4.1.2
+spacy-udpipe==1.0.0
+nemo_toolkit[all]
+deeppavlov==0.17.1
+transformers==4.12.5
+numerizer==0.2.0
+pandas==1.3.4
+numpy==1.20.3
+gdown==3.6.4
