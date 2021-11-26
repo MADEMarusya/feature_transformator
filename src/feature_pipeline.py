@@ -13,8 +13,8 @@ from src.feature_transformers.lda_model_transformer import LdaModelTransformer
 from src.feature_transformers.root_word_transformer import RootWordTransformer
 from src.feature_transformers.translate_transformer import TranslateTransformer
 from src.feature_transformers.syntax_spacy_transformer import SyntaxSpacyTransformer
-from src.feature_transformers.syntax_deeppavlov_transformer import SyntaxDeeppavlovTransformer
-from src.feature_transformers.ner_deeppavlov_transformer import NerDeeppavlovTransformer
+# from src.feature_transformers.syntax_deeppavlov_transformer import SyntaxDeeppavlovTransformer
+# from src.feature_transformers.ner_deeppavlov_transformer import NerDeeppavlovTransformer
 from src.feature_transformers.ner_dslim_transformer import NerDslimTransformer
 from src.feature_transformers.language_identification_transformer import LanguageIdentificationTransformer
 from src.feature_transformers.en_numerize_transformer import EnNumerizeTransform
@@ -130,16 +130,16 @@ class FeaturePipeline:
                 syntax_pos_spacy_column=syntax_pos_spacy_column,
                 ru_spacy_udpipe_model=self.ru_spacy_udpipe_model
             )),
-            ("syntax_deeppavlov_transformer", SyntaxDeeppavlovTransformer(
-                process_column=clean_column,
-                syntax_deeppavlov_column=syntax_deeppavlov_column,
-            )),
-            ("ner_deeppavlov_transformer", NerDeeppavlovTransformer(
-                    process_column=capit_punkt_column,
-                    ner_deeppavlov_column=ner_deeppavlov_column,
-                    tokens_ner_deeppavlov_column=tokens_ner_deeppavlov_column,
-                    device=device
-            )),
+            # ("syntax_deeppavlov_transformer", SyntaxDeeppavlovTransformer(
+            #     process_column=clean_column,
+            #     syntax_deeppavlov_column=syntax_deeppavlov_column,
+            # )),
+            # ("ner_deeppavlov_transformer", NerDeeppavlovTransformer(
+            #         process_column=capit_punkt_column,
+            #         ner_deeppavlov_column=ner_deeppavlov_column,
+            #         tokens_ner_deeppavlov_column=tokens_ner_deeppavlov_column,
+            #         device=device
+            # )),
             ("ner_dslim_transformer", NerDslimTransformer(
                 process_column=translated_sentence_column,
                 misc_column=misc_column,

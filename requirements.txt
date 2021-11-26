@@ -5,7 +5,6 @@ scikit-learn==0.21.2
 gensim==4.1.2
 spacy-udpipe==1.0.0
 nemo_toolkit[all]
-deeppavlov==0.17.1
 transformers==4.12.5
 numerizer==0.2.0
 pandas==0.25.3
