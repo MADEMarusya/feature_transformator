@@ -15,8 +15,8 @@ class FirstWordAndLemmaTransformer:
             ru_spacy_udpipe_model: Language,
     ):
         self.process_column = process_column
-        self.first_world_column = first_world_column,
-        self.first_world_lemma_column = first_world_lemma_column,
+        self.first_world_column = first_world_column
+        self.first_world_lemma_column = first_world_lemma_column
         self.ru_spacy_udpipe_model = ru_spacy_udpipe_model
 
     def fit(self, X: DataFrame, y: Series = None):
