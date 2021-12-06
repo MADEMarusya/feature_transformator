@@ -1,5 +1,5 @@
 typing==3.7.4.3
-scikit-learn==0.21.2
+scikit-learn==0.22
 nemo_toolkit[all]
 gensim==4.1.2
 spacy-udpipe==1.0.0
