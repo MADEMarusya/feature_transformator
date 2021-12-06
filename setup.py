@@ -1,4 +1,7 @@
 import os
+import os.path
+
+import subprocess
 from setuptools import find_packages, setup
 
 def req_file(filename, folder=""):
@@ -6,9 +9,11 @@ def req_file(filename, folder=""):
         content = f.readlines()
     return [x.strip() for x in content]
 
-extras = {
-    "all": req_file("requirements-nemo.txt")
-}
+
+  
+  
+if os.path.exists("scripts/download.sh"):
+    print(subprocess.run(["sh", "scripts/download.sh"], capture_output=True))
 	
 setup(
     name="feature_transformer_made_marusya",
