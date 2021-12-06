@@ -4,8 +4,8 @@
 Для работы с модулем необходимо установить зависимости вручную (надеюсь это временное решение) 
 и скачать все нужные модели
 ```bash
-git clone https://github.com/MADEMarusya/feature_transformator.git
-cd feature_transformator/ && pip install .
+git clone https://github.com/MADEMarusya/feature_transformator.git && cd feature_transformator/ && pip install .
+sh  feature_transformator/download.sh
 
 # Установка модели английского нумеризатора
 python -m spacy download en_core_web_sm
