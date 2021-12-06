@@ -4,15 +4,9 @@
 Для работы с модулем необходимо установить зависимости вручную (надеюсь это временное решение) 
 и скачать все нужные модели
 ```bash
-apt-get update && apt-get install -y libsndfile1 ffmpeg
-pip install Cython
-pip install nemo_toolkit[all]
-pip install spacy_udpipe
-pip install numerizer
-pip install transformers
-pip install fasttext
-# установка модели синтактического анализа от deeppavlov
-python -m deeppavlov install syntax_ru_syntagrus_bert
+git clone https://github.com/MADEMarusya/feature_transformator.git
+cd feature_transformator/ && pip install .
+
 # Установка модели английского нумеризатора
 python -m spacy download en_core_web_sm
 # скачивание модель языковой идентификации 
@@ -23,8 +17,7 @@ gdown --id 1-1Usk7sM1aydyZFEyTetaY7tydwoG1dC
 
 После подготовки можно использовать пайплайн
 ```python
-import sys
-sys.path.append("./feature_transformator")
+
 
 from feature_transformator.src.feature_pipeline import FeaturePipeline
 import torch
