@@ -2,9 +2,11 @@ from pandas import DataFrame
 from pandas import Series
 from torch import device as torch_device
 from nemo.collections.nlp.models import PunctuationCapitalizationModel
-
+from src.constatns.constatns import SEPARATOR
 
 class CapitalizationPunctuationTransformer:
+
+    PUNKTS = "?!.,"
 
     def __init__(
             self,
@@ -34,5 +36,10 @@ class CapitalizationPunctuationTransformer:
             X[self.process_column].values,
             batch_size=self.batch_size,
         )
-        X[self.new_column] = result
+        result_proc = []
+        for text in result:
+            if text[-1] in self.PUNKTS:
+                text = text[:-1] + SEPARATOR + text[-1]
+            result_proc.append(text)
+        X[self.new_column] = result_proc
         return X

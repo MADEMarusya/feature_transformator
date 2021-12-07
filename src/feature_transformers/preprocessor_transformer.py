@@ -4,6 +4,7 @@ from src.constatns.constatns import REMOVE_WORDS
 from src.constatns.constatns import REPLACE_WORDS
 from src.constatns.constatns import SEPARATOR
 from src.constatns.constatns import STOP_WORDS
+from src.constatns.constatns import EMPTY_VALUE
 
 
 class PreprocessorTransformer:
@@ -27,6 +28,8 @@ class PreprocessorTransformer:
                     for word in words[:2]
                     if word not in STOP_WORDS
                 ] + words[2:]
+        if len(words) == 0:
+            words.append(EMPTY_VALUE)
         return SEPARATOR.join(words)
 
     def fit(self, X: DataFrame, y: Series = None):
