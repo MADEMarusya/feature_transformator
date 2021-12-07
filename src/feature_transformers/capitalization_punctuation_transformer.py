@@ -38,7 +38,7 @@ class CapitalizationPunctuationTransformer:
         )
         result_proc = []
         for text in result:
-            if text[-1] in self.PUNKTS:
+            if len(text) > 0 and text[-1] in self.PUNKTS:
                 text = text[:-1] + SEPARATOR + text[-1]
             result_proc.append(text)
         X[self.new_column] = result_proc
