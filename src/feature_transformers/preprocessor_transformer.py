@@ -22,15 +22,18 @@ class PreprocessorTransformer:
             string = string.replace(word, " ")
         for k, v in REPLACE_WORDS.items():
             string = string.replace(k, v)
+
         words = string.split(SEPARATOR)
         words = [
                     word
                     for word in words[:2]
                     if word not in STOP_WORDS
                 ] + words[2:]
-        if len(words) == 0:
-            words.append(EMPTY_VALUE)
-        return SEPARATOR.join(words)
+
+        result = SEPARATOR.join(words)
+        if len(result.strip()) == 0:
+            result += EMPTY_VALUE
+        return result
 
     def fit(self, X: DataFrame, y: Series = None):
         return self
