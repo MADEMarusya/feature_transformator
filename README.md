@@ -6,7 +6,10 @@
 ```bash
 git clone https://github.com/MADEMarusya/feature_transformator.git && cd feature_transformator/ && pip install .
 sh  feature_transformator/download.sh
+```
 
+В файле feature_transformator/download.sh содержаться команды на скачивание моделей
+```bash
 # Установка модели английского нумеризатора
 python -m spacy download en_core_web_sm
 # скачивание модель языковой идентификации 
