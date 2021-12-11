@@ -24,7 +24,6 @@ class NerDeeppavlovTransformer:
             config_ner,
             download=True
         )
-        self.ner_model = self.ner_model.to(device)
         self.device = device
 
     def fit(self, X: DataFrame, y: Series = None):
