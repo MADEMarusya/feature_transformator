@@ -3,7 +3,7 @@ from pandas import Series
 from pandas import concat
 from sklearn.feature_extraction.text import CountVectorizer
 from gensim.matutils import Sparse2Corpus
-from gensim.models import LdaMulticore
+from gensim.models import LdaModel
 from typing import List
 
 from src.feature_transformers.preprocessor_transformer import PreprocessorTransformer
@@ -47,13 +47,12 @@ class LdaModelTransformer:
             corpus_dictionary,
             documents_columns=False
         )
-        self.lda_model = LdaMulticore(
+        self.lda_model = LdaModel(
             corpus=corpus,
             id2word=self.id_map,
             passes=2,
             random_state=5,
-            num_topics=self.num_topics,
-            workers=2
+            num_topics=self.num_topics
         )
 
     def fit(self, X: DataFrame, y: Series = None):
